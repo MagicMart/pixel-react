@@ -17,8 +17,8 @@ class Cell extends Component {
                     background: this.state.background,
                     border:
                         this.state.background === "white"
-                            ? "black solid 0.5px"
-                            : `${this.state.background} solid 0.5px`
+                            ? "black solid 1px"
+                            : `${this.state.background} solid 1px`
                 }}
                 onClick={() => this.changeColor()}
             />

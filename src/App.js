@@ -6,13 +6,34 @@ class App extends Component {
     render() {
         const arr1 = [];
         for (let i = 0; i < 100; i += 1) {
-            arr1.push(<Cell />);
+            arr1.push(<Cell key={i} />);
         }
         return (
             <div className="App">
                 <div className="container">
-                    <h1>Pixel Art Maker</h1>
-                    {arr1}
+                    <h1 id="heading">Pixel Art Maker</h1>
+                    <div className="inputs">
+                        {" "}
+                        <label>
+                            Width:
+                            {"  "}
+                            <input type="number" style={{ width: "48px" }} />
+                        </label>
+                        <label>
+                            {"  "}
+                            Height:{" "}
+                            <input
+                                type="number"
+                                style={{ width: "48px" }}
+                            />{" "}
+                        </label>
+                        <button type="submit" style={{ width: "58px" }}>
+                            {" "}
+                            Submit
+                        </button>
+                    </div>
+
+                    <div className="grid">{arr1}</div>
                 </div>
             </div>
         );
