@@ -4,19 +4,28 @@ import Cell from "./components/Cell";
 import "./App.css";
 
 class App extends Component {
-    state = { width: 10, height: 10 };
+    state = { width: 10, height: 10, clear: false };
     gridWidth = width => {
         console.log("gridwidth", width);
-        this.setState({ width: width });
+        this.setState({ width: width, clear: true });
     };
     gridHeight = height => {
-        this.setState({ height: height });
+        this.setState({ height: height, clear: true });
+    };
+    resetClear = () => {
+        this.setState({ clear: false });
     };
     render() {
         console.log("App");
         const arr1 = [];
         for (let i = 0; i < this.state.width * this.state.height; i += 1) {
-            arr1.push(<Cell key={i} />);
+            arr1.push(
+                <Cell
+                    clear={this.state.clear}
+                    resetClear={this.resetClear}
+                    key={i}
+                />
+            );
         }
 
         return (

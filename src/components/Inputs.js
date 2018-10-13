@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Inputs extends Component {
     render() {
@@ -32,5 +33,12 @@ class Inputs extends Component {
         );
     }
 }
+
+Inputs.protoTypes = {
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+    gridWidth: PropTypes.func.isRequired,
+    gridHeight: PropTypes.func.isRequired
+};
 
 export default Inputs;

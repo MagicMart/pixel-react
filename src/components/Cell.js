@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Cell extends Component {
     state = { background: "white" };
@@ -9,8 +10,18 @@ class Cell extends Component {
                 : { background: "red" };
         });
     };
+    clearCell = () => {
+        this.setState({ background: "white" });
+
+        this.props.resetClear();
+    };
+
+    componentDidUpdate() {
+        if (this.props.clear) {
+            this.clearCell();
+        }
+    }
     render() {
-        console.log("Cell");
         return (
             <div
                 className="cell"
@@ -26,5 +37,10 @@ class Cell extends Component {
         );
     }
 }
+
+Cell.propTypes = {
+    clear: PropTypes.bool.isRequired,
+    resetClear: PropTypes.func.isRequired
+};
 
 export default Cell;
