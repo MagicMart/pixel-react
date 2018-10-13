@@ -12,11 +12,10 @@ class Cell extends Component {
     };
     clearCell = () => {
         if (this.state.background !== "white") {
-            console.log("componentdid update");
             this.setState({ background: "white" });
+            console.log("A cell was cleared");
         }
-
-        this.props.resetClear();
+        //this.props.resetClear();
     };
 
     componentDidUpdate() {

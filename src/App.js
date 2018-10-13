@@ -4,16 +4,33 @@ import Cell from "./components/Cell";
 import "./App.css";
 
 class App extends Component {
-    state = { width: 10, height: 10, clear: false };
+    state = {
+        width: 10,
+        height: 10,
+        clear: false
+    };
     gridWidth = width => {
-        console.log("gridwidth", width);
-        this.setState({ width: width, clear: true });
+        if (width >= 0 && width <= 30) {
+            this.setState({ width, clear: true });
+            setTimeout(() => {
+                console.log("Is it clear", this.state.clear);
+                this.resetClear();
+            }, 0);
+        }
     };
     gridHeight = height => {
-        this.setState({ height: height, clear: true });
+        if (height >= 0 && height <= 30) {
+            this.setState({ height, clear: true });
+            setTimeout(() => {
+                this.resetClear();
+            }, 0);
+        }
     };
     resetClear = () => {
-        this.setState({ clear: false });
+        if (this.state.clear) {
+            this.setState({ clear: false });
+            console.log("clear set to false");
+        }
     };
     render() {
         console.log("App");

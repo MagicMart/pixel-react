@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 class Inputs extends Component {
     render() {
         console.log("Inputs");
-        console.log("gridwifth func", this.props.gridWidth);
         return (
             <form onSubmit={this.props.gridSize} className="inputs">
                 {" "}
