@@ -38,8 +38,7 @@ class Cell extends Component {
 }
 
 Cell.propTypes = {
-    clear: PropTypes.bool.isRequired,
-    resetClear: PropTypes.func.isRequired
+    clear: PropTypes.bool.isRequired
 };
 
 export default Cell;
