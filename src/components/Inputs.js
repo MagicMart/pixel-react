@@ -2,26 +2,33 @@ import React, { Component } from "react";
 
 class Inputs extends Component {
     render() {
+        console.log("Inputs");
+        console.log("gridwifth func", this.props.gridWidth);
         return (
-            <div className="inputs">
+            <form onSubmit={this.props.gridSize} className="inputs">
                 {" "}
                 <label>
                     Width:
                     {"  "}
-                    <input type="number" style={{ width: "48px" }} />
+                    <input
+                        type="number"
+                        style={{ width: "48px" }}
+                        value={this.props.width}
+                        onChange={e => this.props.gridWidth(e.target.value)}
+                    />
                 </label>
                 <label>
                     {"  "}
-                    Height: <input
+                    Height:{" "}
+                    <input
                         type="number"
                         style={{ width: "48px" }}
+                        value={this.props.height}
+                        onChange={e => this.props.gridHeight(e.target.value)}
                     />{" "}
                 </label>
-                <button type="submit" style={{ width: "68px" }}>
-                    {" "}
-                    Submit
-                </button>
-            </div>
+                <input type="submit" style={{ width: "68px" }} value="Submit" />
+            </form>
         );
     }
 }

@@ -10,6 +10,7 @@ class Cell extends Component {
         });
     };
     render() {
+        console.log("Cell");
         return (
             <div
                 className="cell"

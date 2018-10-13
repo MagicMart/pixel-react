@@ -4,17 +4,40 @@ import Cell from "./components/Cell";
 import "./App.css";
 
 class App extends Component {
+    state = { width: 10, height: 10 };
+    gridWidth = width => {
+        console.log("gridwidth", width);
+        this.setState({ width: width });
+    };
+    gridHeight = height => {
+        this.setState({ height: height });
+    };
     render() {
+        console.log("App");
         const arr1 = [];
-        for (let i = 0; i < 100; i += 1) {
+        for (let i = 0; i < this.state.width * this.state.height; i += 1) {
             arr1.push(<Cell key={i} />);
         }
+
         return (
             <div className="App">
                 <div className="container">
                     <h1 id="heading">Pixel Art Maker</h1>
-                    <Inputs />
-                    <div className="grid">{arr1}</div>
+                    <Inputs
+                        width={this.state.width}
+                        height={this.state.height}
+                        gridWidth={this.gridWidth}
+                        gridHeight={this.gridHeight}
+                    />
+                    <div
+                        className="grid"
+                        style={{
+                            width: this.state.width * 20 + "px",
+                            height: this.state.height * 20 + "px"
+                        }}
+                    >
+                        {arr1}
+                    </div>
                 </div>
             </div>
         );
