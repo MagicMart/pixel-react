@@ -32,6 +32,13 @@ class App extends Component {
             console.log("clear set to false");
         }
     };
+    clearCells = () => {
+        this.setState({ clear: true });
+        setTimeout(() => {
+            this.resetClear();
+        }, 0);
+    };
+
     render() {
         console.log("App");
         const arr1 = [];
@@ -54,6 +61,7 @@ class App extends Component {
                         height={this.state.height}
                         gridWidth={this.gridWidth}
                         gridHeight={this.gridHeight}
+                        clearCells={this.clearCells}
                     />
                     <div
                         className="grid"

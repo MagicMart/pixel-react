@@ -11,15 +11,12 @@ class Cell extends Component {
         });
     };
     clearCell = () => {
-        if (this.state.background !== "white") {
-            this.setState({ background: "white" });
-            console.log("A cell was cleared");
-        }
-        //this.props.resetClear();
+        console.log("function clearCell called");
+        this.setState({ background: "white" });
     };
 
     componentDidUpdate() {
-        if (this.props.clear) {
+        if (this.props.clear && this.state.background !== "white") {
             this.clearCell();
         }
     }

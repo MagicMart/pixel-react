@@ -27,7 +27,12 @@ class Inputs extends Component {
                         onChange={e => this.props.gridHeight(e.target.value)}
                     />{" "}
                 </label>
-                <input type="submit" style={{ width: "68px" }} value="Submit" />
+                <input
+                    type="button"
+                    style={{ width: "68px" }}
+                    value="Clear"
+                    onClick={this.props.clearCells}
+                />
             </form>
         );
     }
@@ -37,7 +42,8 @@ Inputs.protoTypes = {
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
     gridWidth: PropTypes.func.isRequired,
-    gridHeight: PropTypes.func.isRequired
+    gridHeight: PropTypes.func.isRequired,
+    clearCells: PropTypes.func.isRequired
 };
 
 export default Inputs;
