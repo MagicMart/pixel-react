@@ -5,7 +5,7 @@ class Inputs extends Component {
     render() {
         console.log("Inputs");
         return (
-            <form onSubmit={this.props.gridSize} className="inputs">
+            <form className="inputs">
                 {" "}
                 <label>
                     Width:

@@ -7,8 +7,10 @@ class App extends Component {
     state = {
         width: 10,
         height: 10,
-        clear: false
+        clear: false,
+        isMouseDown: false
     };
+
     gridWidth = width => {
         if (width >= 0 && width <= 30) {
             this.setState({ width, clear: true });
@@ -26,6 +28,16 @@ class App extends Component {
     clearCells = () => {
         this.setState({ clear: true });
     };
+    mouseDownUp = () => {
+        console.log("MouseDown");
+        this.setState(
+            prevState =>
+                prevState.isMouseDown
+                    ? { isMouseDown: false }
+                    : { isMouseDown: true }
+        );
+    };
+
     componentDidUpdate() {
         if (this.state.clear) {
             this.resetClear();
@@ -36,12 +48,18 @@ class App extends Component {
         console.log("App");
         const arr1 = [];
         for (let i = 0; i < this.state.width * this.state.height; i += 1) {
-            arr1.push(<Cell clear={this.state.clear} key={i} />);
+            arr1.push(
+                <Cell
+                    isMouseDown={this.state.isMouseDown}
+                    clear={this.state.clear}
+                    key={i}
+                />
+            );
         }
 
         return (
             <div className="App">
-                <div className="container">
+                <div className="container" onMouseUp={this.mouseDownUp}>
                     <h1 id="heading">Pixel Art Maker</h1>
                     <Inputs
                         width={this.state.width}
@@ -52,6 +70,7 @@ class App extends Component {
                     />
                     <div
                         className="grid"
+                        onMouseDown={this.mouseDownUp}
                         style={{
                             width: this.state.width * 20 + "px",
                             height: this.state.height * 20 + "px"

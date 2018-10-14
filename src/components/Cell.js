@@ -10,6 +10,13 @@ class Cell extends Component {
                 : { background: "red" };
         });
     };
+    mousePaint = () => {
+        this.setState(function(state) {
+            if (state.background !== "red") {
+                return { background: "red" };
+            }
+        });
+    };
     clearCell = () => {
         console.log("function clearCell called");
         this.setState({ background: "white" });
@@ -20,6 +27,7 @@ class Cell extends Component {
             this.clearCell();
         }
     }
+
     render() {
         return (
             <div
@@ -32,6 +40,11 @@ class Cell extends Component {
                             : `${this.state.background} solid 1px`
                 }}
                 onClick={() => this.changeColor()}
+                onMouseEnter={() => {
+                    if (this.props.isMouseDown) {
+                        this.mousePaint();
+                    }
+                }}
             />
         );
     }
