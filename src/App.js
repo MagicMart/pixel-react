@@ -28,14 +28,20 @@ class App extends Component {
     clearCells = () => {
         this.setState({ clear: true });
     };
-    mouseDownUp = () => {
+    mouseDown = e => {
+        console.log(e);
+        this.setState(() => {
+            return { isMouseDown: true };
+        });
+    };
+    mouseUp = () => {
         console.log("MouseDown");
-        this.setState(
-            prevState =>
-                prevState.isMouseDown
-                    ? { isMouseDown: false }
-                    : { isMouseDown: true }
-        );
+        this.setState(() => {
+            return { isMouseDown: false };
+        });
+    };
+    preventDrag = e => {
+        e.preventDefault();
     };
 
     componentDidUpdate() {
@@ -59,7 +65,7 @@ class App extends Component {
 
         return (
             <div className="App">
-                <div className="container" onMouseUp={this.mouseDownUp}>
+                <div className="container">
                     <h1 id="heading">Pixel Art Maker</h1>
                     <Inputs
                         width={this.state.width}
@@ -70,7 +76,10 @@ class App extends Component {
                     />
                     <div
                         className="grid"
-                        onMouseDown={this.mouseDownUp}
+                        onMouseLeave={this.mouseUp}
+                        onMouseUp={this.mouseUp}
+                        onDragStart={e => this.preventDrag(e)}
+                        onMouseDown={this.mouseDown}
                         style={{
                             width: this.state.width * 20 + "px",
                             height: this.state.height * 20 + "px"

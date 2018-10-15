@@ -40,6 +40,11 @@ class Cell extends Component {
                             : `${this.state.background} solid 1px`
                 }}
                 onClick={() => this.changeColor()}
+                onMouseLeave={() => {
+                    if (this.props.isMouseDown) {
+                        this.mousePaint();
+                    }
+                }}
                 onMouseEnter={() => {
                     if (this.props.isMouseDown) {
                         this.mousePaint();
