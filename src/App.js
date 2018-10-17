@@ -23,25 +23,19 @@ class App extends Component {
     };
     resetClear = () => {
         this.setState({ clear: false });
-        console.log("clear set to false");
     };
     clearCells = () => {
         this.setState({ clear: true });
     };
     mouseDown = e => {
-        console.log(e);
         this.setState(() => {
             return { isMouseDown: true };
         });
     };
     mouseUp = () => {
-        console.log("MouseDown");
         this.setState(() => {
             return { isMouseDown: false };
         });
-    };
-    preventDrag = e => {
-        e.preventDefault();
     };
 
     componentDidUpdate() {
@@ -52,16 +46,20 @@ class App extends Component {
 
     render() {
         console.log("App");
-        const arr1 = [];
-        for (let i = 0; i < this.state.width * this.state.height; i += 1) {
-            arr1.push(
-                <Cell
-                    isMouseDown={this.state.isMouseDown}
-                    clear={this.state.clear}
-                    key={i}
-                />
-            );
-        }
+        const cells = () => {
+            let arr = [];
+            for (let i = 0; i < this.state.width * this.state.height; i += 1) {
+                arr = [
+                    ...arr,
+                    <Cell
+                        isMouseDown={this.state.isMouseDown}
+                        clear={this.state.clear}
+                        key={i}
+                    />
+                ];
+            }
+            return arr;
+        };
 
         return (
             <div className="App">
@@ -78,14 +76,16 @@ class App extends Component {
                         className="grid"
                         onMouseLeave={this.mouseUp}
                         onMouseUp={this.mouseUp}
-                        onDragStart={e => this.preventDrag(e)}
+                        onDragStart={e => {
+                            e.preventDefault();
+                        }}
                         onMouseDown={this.mouseDown}
                         style={{
                             width: this.state.width * 20 + "px",
                             height: this.state.height * 20 + "px"
                         }}
                     >
-                        {arr1}
+                        {cells()}
                     </div>
                 </div>
             </div>
