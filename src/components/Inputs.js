@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 class Inputs extends Component {
     render() {
-        console.log("Inputs");
         return (
             <form className="inputs">
                 {" "}

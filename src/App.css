@@ -24,6 +24,12 @@ html {
     margin: 0 auto;
 }
 
+.palette {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px auto;
+}
+
 .cell {
     background: white;
     width: 20px;

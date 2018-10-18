@@ -3,22 +3,20 @@ import PropTypes from "prop-types";
 
 class Cell extends Component {
     state = { background: "white" };
+
     changeColor = () => {
         this.setState(function(state) {
-            return state.background === "red"
-                ? { background: "white" }
-                : { background: "red" };
+            return state.background === "white"
+                ? { background: this.props.color }
+                : { background: "white" };
         });
     };
     mousePaint = () => {
-        this.setState(function(state) {
-            if (state.background !== "red") {
-                return { background: "red" };
-            }
+        this.setState(function() {
+            return { background: this.props.color };
         });
     };
     clearCell = () => {
-        console.log("function clearCell called");
         this.setState({ background: "white" });
     };
 

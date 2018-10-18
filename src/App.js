@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import Inputs from "./components/Inputs";
 import Cell from "./components/Cell";
+import Palette from "./components/Palette";
 import "./App.css";
 
 class App extends Component {
     state = {
         width: 10,
         height: 10,
+        color: "black",
         clear: false,
         isMouseDown: false
     };
@@ -43,9 +45,11 @@ class App extends Component {
             this.resetClear();
         }
     }
+    colorChoice = e => {
+        this.setState({ color: e.target.style.background });
+    };
 
     render() {
-        console.log("App");
         const cells = () => {
             let arr = [];
             for (let i = 0; i < this.state.width * this.state.height; i += 1) {
@@ -55,6 +59,7 @@ class App extends Component {
                         isMouseDown={this.state.isMouseDown}
                         clear={this.state.clear}
                         key={i}
+                        color={this.state.color}
                     />
                 ];
             }
@@ -72,6 +77,7 @@ class App extends Component {
                         gridHeight={this.gridHeight}
                         clearCells={this.clearCells}
                     />
+                    <Palette colorChoice={this.colorChoice} />
                     <div
                         className="grid"
                         onMouseLeave={this.mouseUp}
