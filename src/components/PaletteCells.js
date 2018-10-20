@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function PaletteCells(props) {
     return (
@@ -9,5 +10,10 @@ function PaletteCells(props) {
         />
     );
 }
+
+PaletteCells.propTypes = {
+    colorChoice: PropTypes.func.isRequired,
+    color: PropTypes.string.isRequired
+};
 
 export default PaletteCells;

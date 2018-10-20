@@ -1,5 +1,6 @@
 import React from "react";
 import PaletteCells from "./PaletteCells";
+import PropTypes from "prop-types";
 
 function Palette(props) {
     const paletteCells = () => {
@@ -13,10 +14,10 @@ function Palette(props) {
             "indigo",
             "violet",
             "black",
-            "white",
+            "#ffffff",
             "gray"
         ];
-        for (let i = 0; i <= 9; i += 1) {
+        for (let i = 0; i < colors.length; i += 1) {
             arr = [
                 ...arr,
                 <PaletteCells
@@ -28,7 +29,26 @@ function Palette(props) {
         }
         return arr;
     };
-    return <div className="palette">{paletteCells()}</div>;
+    return (
+        <div className="palette">
+            {paletteCells()}{" "}
+            <div
+                className="cell"
+                onClick={e => props.colorChoice(e)}
+                style={{
+                    margin: "0 0 0 5px",
+                    background: "white",
+                    border: "2px solid black"
+                }}
+            >
+                E
+            </div>
+        </div>
+    );
 }
+
+Palette.propTypes = {
+    colorChoice: PropTypes.func.isRequired
+};
 
 export default Palette;

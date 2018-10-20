@@ -54,7 +54,8 @@ class Cell extends Component {
 }
 
 Cell.propTypes = {
-    clear: PropTypes.bool.isRequired
+    clear: PropTypes.bool.isRequired,
+    isMouseDown: PropTypes.bool.isRequired
 };
 
 export default Cell;
