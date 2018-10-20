@@ -14,12 +14,12 @@ class App extends Component {
     };
 
     gridWidth = width => {
-        if (width >= 0 && width <= 30) {
+        if (width >= 0 && width <= 23) {
             this.setState({ width, clear: true });
         }
     };
     gridHeight = height => {
-        if (height >= 0 && height <= 30) {
+        if (height >= 0 && height <= 23) {
             this.setState({ height, clear: true });
         }
     };
