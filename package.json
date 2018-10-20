@@ -2,13 +2,16 @@
   "name": "pixel-art",
   "version": "0.1.0",
   "private": true,
+  "home": "https://magicmart.github.io/pixel-art-react",
   "dependencies": {
+    "gh-pages": "^2.0.1",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-scripts": "2.0.4"
   },
   "scripts": {
+    "deploy":"npm run build&&gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
